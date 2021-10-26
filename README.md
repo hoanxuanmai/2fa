@@ -1,4 +1,4 @@
-##2FA for Laravel
+## 2FA for Laravel
 
 A One Time Password Authentication package.
 
@@ -23,18 +23,22 @@ A One Time Password Authentication package.
     
     ```
 
-5. Default config file contents
+* Default config file contents
+
     ```php
-    'enabled' => true,
-        'show_secret' => true,
+    // ...
+    return [
+        'enabled' => true,
+        'show_secret' => false,
         'route' => [
             'prefix' => 'user'
         ],
-    
+
         'extend_layout' => 'layouts.app',
-    
+
         'encrypt_secret' => true,
-    
+
+        /*customer QR style*/
         'qr_code' => [
             'size' => 192,
             'margin' => 0,
@@ -48,7 +52,16 @@ A One Time Password Authentication package.
                 'green' => 55, //green the green amount of the color, 0 to 255
                 'blue' => 72 //blue the blue amount of the color, 0 to 255
             ],
+        ],
+
+        /*customer messages*/
+        'messages' => [
+            'enabled_2fa' => __('2FA is enabled successfully.'),
+            'disabled_2fa' => __("2FA is now disabled."),
+            'invalid_code' => __('Invalid verification Code, Please try again.'),
+            'password_wrong' => __("Your password does not matches with your account password. Please try again."),
         ]
+    ];
     ```
 ## Basic Usage
 * First, add the HXM2FA\TwoFactorAuthenticatable trait to your User model(s):
