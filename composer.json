@@ -1,0 +1,31 @@
+{
+    "name": "hxm/2fa",
+    "description": "A One Time Password Authentication package.",
+    "keywords": ["authentication", "two factor authentication", "google2fa", "laravel", "hxm", "2fa"],
+    "require": {
+        "pragmarx/google2fa": "^8.0",
+        "bacon/bacon-qr-code": "^2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "HoanXuanMai",
+            "email": "hoanxuanmai@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "HXM2FA\\": "src/"
+        }
+    },
+
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HXM2FA\\ServiceProvider"
+            ]
+        }
+    },
+    "version": "1.0.0"
+}
