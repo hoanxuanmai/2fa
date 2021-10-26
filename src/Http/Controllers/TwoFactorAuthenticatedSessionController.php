@@ -32,6 +32,6 @@ class TwoFactorAuthenticatedSessionController extends Controller
             return redirect('/');
         }
 
-        return redirect()->back()->withErrors(config('hxm2fa.messages.invalid_code', __('Invalid verification Code, Please try again.')));
+        return redirect()->back()->withErrors(__('HXM2FA::messages.invalid_code'));
     }
 }

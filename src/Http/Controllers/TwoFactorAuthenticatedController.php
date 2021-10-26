@@ -59,7 +59,7 @@ class TwoFactorAuthenticatedController extends Controller
         $user->two_factor_secret = HXM2FA::generate2FASecret();
         $user->save();
 
-        return redirect()->route('HXM2FA.setting')->with('success', __("Secret key is generated."));
+        return redirect()->route('HXM2FA.setting')->with('success', __("HXM2FA::messages.secret_generated"));
     }
 
     /**
@@ -77,9 +77,9 @@ class TwoFactorAuthenticatedController extends Controller
         if($valid){
             $user->two_factor_enabled = 1;
             $user->save();
-            return redirect()->route('HXM2FA.setting')->with('success', config('hxm2fa.messages.enabled_2fa', __('2FA is enabled successfully.')));
+            return redirect()->route('HXM2FA.setting')->with('success', __('HXM2FA::messages.enabled_2fa'));
         }else{
-            return redirect()->route('HXM2FA.setting')->with('error', config('hxm2fa.messages.invalid_code', __('Invalid verification Code, Please try again.')));
+            return redirect()->route('HXM2FA.setting')->with('error', __('HXM2FA::messages.invalid_code'));
         }
     }
 
@@ -89,7 +89,7 @@ class TwoFactorAuthenticatedController extends Controller
     public function disable2fa(Request $request){
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("error", config('hxm2fa.messages.password_wrong', __("Your password does not matches with your account password. Please try again.")));
+            return redirect()->back()->with("error", __("HXM2FA::messages.password_wrong"));
         }
 
         $validatedData = $request->validate([
@@ -98,6 +98,6 @@ class TwoFactorAuthenticatedController extends Controller
         $user = Auth::user();
         $user->two_factor_enabled = 0;
         $user->save();
-        return redirect()->route('HXM2FA.setting')->with('success', config('hxm2fa.messages.disabled_2fa', __("2FA is now disabled.")));
+        return redirect()->route('HXM2FA.setting')->with('success', __('HXM2FA::messages.disabled_2fa'));
     }
 }

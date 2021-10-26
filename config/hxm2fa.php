@@ -29,13 +29,5 @@ return [
             'green' => 55, //green the green amount of the color, 0 to 255
             'blue' => 72 //blue the blue amount of the color, 0 to 255
         ],
-    ],
-
-    /*customer messages*/
-    'messages' => [
-        'enabled_2fa' => __('2FA is enabled successfully.'),
-        'disabled_2fa' => __("2FA is now disabled."),
-        'invalid_code' => __('Invalid verification Code, Please try again.'),
-        'password_wrong' => __("Your password does not matches with your account password. Please try again."),
     ]
 ];

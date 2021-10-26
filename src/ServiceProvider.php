@@ -19,6 +19,8 @@ class ServiceProvider extends Service
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'HXM2FA');
+
         $this->publishes([__DIR__.'/../config/hxm2fa.php' => config_path('hxm2fa.php')], 'hxm2fa');
 
         $this->publishes([__DIR__.'/../resources/views' => resource_path('views/vendor/hxm2fa')], 'hxm2fa');
